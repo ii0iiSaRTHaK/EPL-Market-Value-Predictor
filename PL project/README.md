@@ -21,6 +21,12 @@ Python virtual environments contain an absolute path to the Python installation 
 
 Then open [http://localhost:3001](http://localhost:3001). The server fetches and caches season CSVs from 2022/23 through the current 2026/27 snapshot directly from the public dataset repository. Set `PYTHON` to select a specific Python executable if needed.
 
+## Deploy to Vercel
+
+The Vercel deployment keeps the existing built frontend and model artifact. `vercel.json` builds the UI into `public`, while `api/[...path].py` provides the same `/api/status`, `/api/players`, and `/api/players/<id>/prediction` endpoints using Vercel's Python Functions runtime. The original `server.js`, `predict.py`, and frontend source remain the local-development path.
+
+In Vercel, import the Git repository and set **Root Directory** to `EPL-Market-Value-Predictor/PL project`. Leave the framework preset as **Other** and use the settings in `vercel.json` (build command `npm run build`, output directory `public`). The Python runtime installs packages from `requirements.txt`; no environment variables or provider API keys are needed. Deploy, then open the deployment URL and try a player search and prediction. The API downloads season CSVs from the public Fantasy Premier League dataset, so those requests need outbound network access.
+
 The upstream repository documents the player season files and their fields in its [data dictionary](https://github.com/vaastav/Fantasy-Premier-League/blob/master/DATA_DICTIONARY.md). Dataset downloads are cached in memory for six hours. This is historical season data rather than live match data.
 
 ## Prediction flow
