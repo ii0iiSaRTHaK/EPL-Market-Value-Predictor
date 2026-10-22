@@ -1,0 +1,20 @@
+{
+  "name": "player-value",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "start": "node server.js",
+    "test": "node --test tests/*.test.mjs",
+    "verify:source": "node scripts/verify-threeui.mjs"
+  },
+  "dependencies": {
+    "@designcodeio/threeui": "file:vendor/threeui",
+    "react": "19.2.0",
+    "react-dom": "19.2.0"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.11",
+    "jsdom": "26.1.0"
+  }
+}

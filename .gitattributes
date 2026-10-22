@@ -1,0 +1,5 @@
+**/vendor/threeui/** -text
+**/public/landing-pages/** -text
+*.woff2 binary
+*.jpg binary
+*.png binary

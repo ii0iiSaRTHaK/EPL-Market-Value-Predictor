@@ -4,6 +4,8 @@ A Premier League player search and market-value estimator. Player names and seas
 
 ## Setup
 
+The redesigned interface uses the exact ThreeUI Sylva Living Green source. See [UI-IMPLEMENTATION.md](UI-IMPLEMENTATION.md) for its provenance, build commands, and verification notes. The current frontend build is included; run `npm ci` and `npm run build` when changing UI source.
+
 Requires Node.js 18+ and Python 3.13. No provider API key is needed. Create a project-local Python environment and install the model packages into it:
 
 ```powershell
