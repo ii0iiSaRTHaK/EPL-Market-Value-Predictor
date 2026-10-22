@@ -37,7 +37,7 @@ const PYTHON = configuredPythonExists(ENV_PYTHON)
   ? ENV_PYTHON
   : venvHasPythonBase() ? VENV_PYTHON : 'python';
 const modelAvailable = fs.existsSync(path.join(ROOT, 'models', 'pl_value_model_xgboost_retrained.joblib'));
-const mimeTypes = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.svg': 'image/svg+xml' };
+const mimeTypes = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.svg': 'image/svg+xml', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.woff2': 'font/woff2' };
 const apiCache = new Map();
 
 function sendJson(res, data, status = 200) {

@@ -1,0 +1,67 @@
+{
+  "revision": "05f359ce157a",
+  "sourceUrl": "https://threeui.com/source-code/sylva-hero.json",
+  "assetPackage": "@designcodeio/threeui@1.2.0",
+  "files": [
+    {
+      "path": "src/shaders/landing-pages/LandingPages.tsx",
+      "destination": "vendor/threeui/src/shaders/landing-pages/LandingPages.tsx",
+      "bytes": 40525,
+      "sha256": "4d379461ad00eb4de7900df312878035383de7e1ed4e13283b8143a2eea9d30a"
+    },
+    {
+      "path": "src/shaders/landing-pages/pageTypography.ts",
+      "destination": "vendor/threeui/src/shaders/landing-pages/pageTypography.ts",
+      "bytes": 15028,
+      "sha256": "809cc65797d531cd3b3ca5a56815d55d24b3ee8d293e4e4bad6fdfe6c83244cc"
+    },
+    {
+      "path": "src/shaders/landing-pages/pageRecipes.ts",
+      "destination": "vendor/threeui/src/shaders/landing-pages/pageRecipes.ts",
+      "bytes": 74927,
+      "sha256": "c9d9849cc255bac2d1d938d088c50917f84916f1c516d2bbb27fcfd803523233"
+    },
+    {
+      "path": "src/shaders/landing-pages/LandingPageFrame.tsx",
+      "destination": "vendor/threeui/src/shaders/landing-pages/LandingPageFrame.tsx",
+      "bytes": 6756,
+      "sha256": "61de2cc50888aac4ac5557420b07fa47ed3543bb57c1e0055fafdefa53dbaa78"
+    },
+    {
+      "path": "public/landing-pages/inner-green-3d.html",
+      "destination": "public/landing-pages/inner-green-3d.html",
+      "bytes": 197914,
+      "sha256": "69c3694bd63f44ef9f007ebe4dac57a83e4402e0cdf6b54dd10b96dd4f05e197"
+    },
+    {
+      "path": "public/landing-pages/inner-green-assets/three.min.js",
+      "destination": "public/landing-pages/inner-green-assets/three.min.js",
+      "bytes": 608081,
+      "sha256": "8a5f7249903b54d30f79f708699d2fed2d6a1d0741a4cd41377d1f01bb5a2271"
+    },
+    {
+      "path": "src/shaders/threeui.css",
+      "destination": "vendor/threeui/src/shaders/threeui.css",
+      "bytes": 40715,
+      "sha256": "efe4447139f1358dd8e9be68edf6fa46cbefbd1de423a4d6c439ca61d2c8eccf"
+    },
+    {
+      "path": "public/landing-pages/inner-green-assets/card-ecostove.jpg",
+      "destination": "public/landing-pages/inner-green-assets/card-ecostove.jpg",
+      "bytes": 290988,
+      "sha256": "70ce084084902bc502f00c366405b661ecdff90dee95d363b36a6e146829e433"
+    },
+    {
+      "path": "public/landing-pages/inner-green-assets/card-ethos.jpg",
+      "destination": "public/landing-pages/inner-green-assets/card-ethos.jpg",
+      "bytes": 316720,
+      "sha256": "337627390f499b3ae272cec9e2f83c817694a82f42e1aa10a7b26a2c7d679dff"
+    },
+    {
+      "path": "public/landing-pages/inner-green-assets/lexend-latin.woff2",
+      "destination": "public/landing-pages/inner-green-assets/lexend-latin.woff2",
+      "bytes": 39692,
+      "sha256": "1ec8f6ee2750554b4bc59ff0b507d316a82a7ba37e0e5bebc41d3bd9b9faad46"
+    }
+  ]
+}

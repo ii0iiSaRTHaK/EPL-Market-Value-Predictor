@@ -2,57 +2,65 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f5f6f4">
-  <title>Player Value — Premier League</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#4a4d44">
+  <meta name="description" content="Explore Premier League season performance and discover experimental player market-value estimates with Player Value.">
+  <title>Player Value — A different field of view</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="/landing-pages/inner-green-assets/lexend-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/scene.css">
   <link rel="stylesheet" href="/styles.css">
-  <link rel="stylesheet" href="/model.css">
+  <script type="module" src="/assets/scene.js"></script>
   <script src="/app.js" defer></script>
 </head>
-<body>
-  <header class="topbar">
-    <a class="brand" href="/" aria-label="Player Value home"><span class="brand-mark">PV</span><span>PLAYER<span class="brand-light">VALUE</span></span></a>
-    <div class="league-label"><span class="league-dot"></span> PREMIER LEAGUE <span class="top-divider">/</span> MARKET INTELLIGENCE</div>
-    <a class="about-link" href="#about">ABOUT MODEL <span aria-hidden="true">↗</span></a>
-  </header>
-
+<body id="top">
+  <a class="skip-link" href="#scout">Skip to player search</a>
+  <div id="sylva-root">
+    <section class="hero-fallback" aria-label="Player Value">
+      <a class="wordmark" href="#top">player<span>value</span><span class="brand-orbit" aria-hidden="true">↗</span></a>
+      <h1>See the player.<br>Find the value.</h1>
+      <p>A new perspective on Premier League talent.</p>
+      <a class="button button-light" href="#scout">Scout a player <span aria-hidden="true">↗</span></a>
+    </section>
+  </div>
   <main>
-    <section class="hero">
-      <div class="hero-copy">
-        <p class="eyebrow"><span class="eyebrow-line"></span> PLAYER SCOUTING TOOL · 01</p>
-        <h1>What is a player<br>really <span>worth?</span></h1>
-          <p class="intro">Search Premier League players from the 2022/23–2026/27 seasons. Their season statistics feed an XGBoost model to estimate market value.</p>
+    <section class="scouting section-shell" id="scout" aria-labelledby="scout-heading">
+      <div class="section-meta"><a class="wordmark" href="#top">player<span>value</span><span class="brand-orbit" aria-hidden="true">↗</span></a><span>Premier League / Scouting room</span></div>
+      <div class="scout-intro"><h2 id="scout-heading">Your next discovery.</h2><p>Start with a name. See their season in numbers.<br>Find a different perspective on their value.</p></div>
+      <div class="search-layout">
         <div class="search-wrap">
-          <label class="search-label" for="player-search">FIND A PLAYER</label>
+          <label class="search-label" for="player-search">Who are you watching?</label>
           <div class="search-box">
-            <svg class="search-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8" stroke="currentColor" stroke-width="1.7"/><path d="m16 16 4.2 4.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
-            <input id="player-search" type="search" placeholder="Try a player name…" autocomplete="off" aria-autocomplete="list" aria-controls="search-results">
-            <kbd>⌘ K</kbd>
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.7" cy="10.7" r="6.7"/><path d="m16 16 4.3 4.3"/></svg>
+            <input id="player-search" type="search" role="combobox" placeholder="Search a player’s name" autocomplete="off" maxlength="80" aria-autocomplete="list" aria-expanded="false" aria-controls="search-results" aria-describedby="search-help">
+            <button id="clear-search" class="clear-search" type="button" aria-label="Clear player search" hidden>×</button>
+            <kbd id="search-shortcut">Ctrl K</kbd>
           </div>
-          <div id="search-results" class="search-results" role="listbox" hidden></div>
-          <p class="search-hint">SEARCH BY PLAYER NAME · INCLUDES HISTORICAL PLAYERS</p>
+          <div id="search-results" class="search-results" role="listbox" aria-label="Matching Premier League players" hidden></div>
+          <p class="search-help" id="search-help">Type at least 3 letters. Searches include historical Premier League players.</p>
+          <div class="suggestions" aria-label="Try a player search"><span>Start somewhere</span><button type="button" data-query="Haaland">Haaland <span aria-hidden="true">↗</span></button><button type="button" data-query="Salah">Salah <span aria-hidden="true">↗</span></button><button type="button" data-query="Saka">Saka <span aria-hidden="true">↗</span></button></div>
         </div>
+        <div class="scope-note"><span class="scope-label">The field of view</span><p>2022/23 — 2026/27</p><span>Historical FPL season snapshots.<br>Model estimates in euros.</span></div>
       </div>
-      <div class="hero-art" aria-hidden="true">
-        <div class="art-ring ring-one"></div><div class="art-ring ring-two"></div>
-        <div class="art-number">£</div><div class="art-cross cross-a">+</div><div class="art-cross cross-b">+</div>
-        <div class="art-card"><div class="card-top"><span>VALUATION MODEL</span><span class="live-dot"></span></div><div class="card-chart"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div><div class="card-bottom"><span>HISTORICAL ESTIMATE</span><strong>€ ↗</strong></div></div>
-        <div class="art-footnote">DATA-DRIVEN<br>PLAYER VALUATION</div>
+      <div class="runtime-status"><span class="status-dot" aria-hidden="true"></span><p class="search-hint" role="status">Connecting to the player archive…</p></div>
+      <div id="search-announcement" class="visually-hidden" role="status" aria-live="polite"></div>
+      <div id="empty-state" class="empty-state">
+        <div class="pitch-mark" aria-hidden="true"><span></span><i></i></div>
+        <div><h3>Every valuation starts with a name.</h3><p>Your player’s performance and estimated value will appear here.</p></div>
+        <span class="empty-index" aria-hidden="true">01 / SCOUT</span>
+      </div>
+      <section id="result" class="result-section" aria-label="Player valuation" aria-live="polite" aria-busy="false" hidden></section>
+    </section>
+    <section class="method section-shell" id="method" aria-labelledby="method-heading">
+      <div class="method-intro"><span class="overline">Behind the estimate</span><h2 id="method-heading">A model.<br>A perspective.</h2><p>Performance is a starting point. Context is everything. Here’s what goes into the number—and what it leaves out.</p><a class="text-link" href="https://github.com/ii0iiSaRTHaK/EPL-Market-Value-Predictor" target="_blank" rel="noopener noreferrer">Explore the project <span aria-hidden="true">↗</span></a></div>
+      <div class="method-steps">
+        <article><span>01</span><div><h3>Find the player</h3><p>Names, positions, and season statistics come from public Fantasy Premier League datasets. Search across five season snapshots, including historical players.</p></div></article>
+        <article><span>02</span><div><h3>Read the performance</h3><p>Goals, assists, minutes, and cards from the selected and preceding seasons become inputs to the saved XGBoost model.</p></div></article>
+        <article><span>03</span><div><h3>Keep the context</h3><p>This is an experimental market-value estimate, not a transfer fee. Age, height, appearances, and several profile fields are unavailable. Full-season totals differ from the model’s rolling-year training inputs.</p></div></article>
+        <details><summary>What does the evaluation tell us?<span aria-hidden="true">+</span></summary><p>The saved model’s historical holdout median absolute percentage error was 47.9%, with RMSE around €14.4 million. Those results describe the historical test set; they do not measure the incomplete input setup used in this app.</p></details>
       </div>
     </section>
-
-    <section id="result" class="result-section" aria-live="polite" hidden></section>
-
-    <section class="method-strip" id="about">
-      <div class="method-heading"><span class="section-number">01 /</span><span>HOW IT WORKS</span></div>
-      <div class="method-item"><span class="method-icon">↗</span><div><strong>Historical player data</strong><p>Names, positions, and season performance totals are fetched from public Fantasy Premier League datasets. Several profile fields are unavailable.</p></div></div>
-      <div class="method-item"><span class="method-icon">⌁</span><div><strong>XGBoost prediction</strong><p>A trained model uses player profile and performance features to estimate value.</p></div></div>
-      <div class="method-item"><span class="method-icon">◎</span><div><strong>Historical holdout</strong><p>47.9% median absolute percentage error on the saved test set. This score does not apply to the incomplete live inputs used here.</p></div></div>
-    </section>
-    <footer><span>PLAYER<span class="brand-light">VALUE</span> <span class="footer-sep">·</span> A DATA EXPLORER</span><span id="model-period">FPL HISTORICAL DATA · XGBOOST MARKET-VALUE MODEL</span></footer>
   </main>
+  <footer class="section-shell"><div class="footer-top"><a class="wordmark" href="#top">player<span>value</span><span class="brand-orbit" aria-hidden="true">↗</span></a><p>A different field of view.</p><a href="#scout">Back to scouting <span aria-hidden="true">↑</span></a></div><div class="footer-bottom"><span>Premier League player research</span><span>Historical data. Experimental estimates.</span><a href="https://threeui.com" target="_blank" rel="noopener noreferrer">Living Green scene by ThreeUI</a></div></footer>
 </body>
 </html>

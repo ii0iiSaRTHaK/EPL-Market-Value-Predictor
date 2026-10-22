@@ -1,0 +1,9 @@
+{
+  "name": "@designcodeio/threeui",
+  "version": "0.0.0-sylva-05f359ce157a",
+  "private": true,
+  "type": "module",
+  "exports": { ".": "./generated/SylvaHero.tsx", "./style.css": "./src/shaders/threeui.css" },
+  "peerDependencies": { "react": ">=18 <20" },
+  "sideEffects": ["**/*.css"]
+}
