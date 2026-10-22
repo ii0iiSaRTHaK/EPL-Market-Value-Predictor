@@ -1,0 +1,21 @@
+{
+  "league": "Premier League (GB1)",
+  "method": "Ordinary least squares linear regression fitted to log market value",
+  "observations": 33748,
+  "training_rows": 26735,
+  "test_rows": 7013,
+  "training_date_range": "2003-12-15 to 2023-05-31",
+  "test_date_range": "2023-06-01 to 2026-06-03",
+  "cutoff_date": "2023-06-01",
+  "features": [
+    "age at valuation date",
+    "height",
+    "position",
+    "club"
+  ],
+  "test_MAE_EUR": 12974047.0,
+  "test_RMSE_EUR": 21785448.02,
+  "test_log_RMSE": 1.4533,
+  "test_R2_log": 0.2181,
+  "note": "Predictions are exponentiated fitted log values. Categories unseen in training contribute zero category weight."
+}

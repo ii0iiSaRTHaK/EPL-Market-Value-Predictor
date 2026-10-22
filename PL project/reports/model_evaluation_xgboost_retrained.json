@@ -1,0 +1,72 @@
+{
+  "primary_model": "xgboost_regressor_log1p",
+  "baseline_model": "linear_regression_same_features",
+  "league_competition_id": "GB1",
+  "test_cutoff": "2023-07-01",
+  "validation_cutoff": "2022-07-01",
+  "train_rows": 22457,
+  "validation_rows": 3203,
+  "test_rows": 5847,
+  "test_date_start": "2023-07-04",
+  "test_date_end": "2026-06-03",
+  "features": [
+    "age",
+    "height_in_cm",
+    "goals_12m",
+    "assists_12m",
+    "minutes_played_12m",
+    "yellow_cards_12m",
+    "red_cards_12m",
+    "games_12m",
+    "minutes_per_game",
+    "position",
+    "sub_position",
+    "foot",
+    "country_of_citizenship",
+    "current_club_name"
+  ],
+  "xgboost_parameters": {
+    "objective": "reg:squarederror",
+    "tree_method": "hist",
+    "learning_rate": 0.1,
+    "max_depth": 4,
+    "min_child_weight": 8,
+    "subsample": 0.85,
+    "colsample_bytree": 0.9,
+    "reg_alpha": 0.05,
+    "reg_lambda": 10.0,
+    "n_estimators": 1905,
+    "n_jobs": 4,
+    "random_state": 42
+  },
+  "metrics": [
+    {
+      "model": "Linear regression baseline (same features)",
+      "rows": 5847,
+      "rmse_eur": 15655407.721114358,
+      "mae_eur": 9723149.946012426,
+      "median_absolute_error_eur": 5373983.084157213,
+      "median_absolute_percentage_error": 55.63909149225441,
+      "rmse_log": 1.032792648392449,
+      "r2_log": 0.5299338573383148
+    },
+    {
+      "model": "XGBoost primary model",
+      "rows": 5847,
+      "rmse_eur": 14423037.346396632,
+      "mae_eur": 8590216.0,
+      "median_absolute_error_eur": 4315243.0,
+      "median_absolute_percentage_error": 47.9313,
+      "rmse_log": 0.9315106452705116,
+      "r2_log": 0.6176084027320152
+    }
+  ],
+  "notes": [
+    "XGBoost rounds were selected on a chronological validation window before the test cutoff.",
+    "Both algorithms use the same features and chronological test rows.",
+    "The report uses the holdout before the primary model is refit on all eligible rows.",
+    "RMSE is in euros; median absolute percentage error is in percent.",
+    "No current clubs.csv snapshot features are used for historical observations.",
+    "Appearance features include only matches strictly before each valuation date."
+  ]
+}

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f6f4">
+  <title>Player Value — Premier League</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/model.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="Player Value home"><span class="brand-mark">PV</span><span>PLAYER<span class="brand-light">VALUE</span></span></a>
+    <div class="league-label"><span class="league-dot"></span> PREMIER LEAGUE <span class="top-divider">/</span> MARKET INTELLIGENCE</div>
+    <a class="about-link" href="#about">ABOUT MODEL <span aria-hidden="true">↗</span></a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="eyebrow-line"></span> PLAYER SCOUTING TOOL · 01</p>
+        <h1>What is a player<br>really <span>worth?</span></h1>
+          <p class="intro">Search Premier League players from the 2022/23–2026/27 seasons. Their season statistics feed an XGBoost model to estimate market value.</p>
+        <div class="search-wrap">
+          <label class="search-label" for="player-search">FIND A PLAYER</label>
+          <div class="search-box">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8" stroke="currentColor" stroke-width="1.7"/><path d="m16 16 4.2 4.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+            <input id="player-search" type="search" placeholder="Try a player name…" autocomplete="off" aria-autocomplete="list" aria-controls="search-results">
+            <kbd>⌘ K</kbd>
+          </div>
+          <div id="search-results" class="search-results" role="listbox" hidden></div>
+          <p class="search-hint">SEARCH BY PLAYER NAME · INCLUDES HISTORICAL PLAYERS</p>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="art-ring ring-one"></div><div class="art-ring ring-two"></div>
+        <div class="art-number">£</div><div class="art-cross cross-a">+</div><div class="art-cross cross-b">+</div>
+        <div class="art-card"><div class="card-top"><span>VALUATION MODEL</span><span class="live-dot"></span></div><div class="card-chart"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div><div class="card-bottom"><span>HISTORICAL ESTIMATE</span><strong>€ ↗</strong></div></div>
+        <div class="art-footnote">DATA-DRIVEN<br>PLAYER VALUATION</div>
+      </div>
+    </section>
+
+    <section id="result" class="result-section" aria-live="polite" hidden></section>
+
+    <section class="method-strip" id="about">
+      <div class="method-heading"><span class="section-number">01 /</span><span>HOW IT WORKS</span></div>
+      <div class="method-item"><span class="method-icon">↗</span><div><strong>Historical player data</strong><p>Names, positions, and season performance totals are fetched from public Fantasy Premier League datasets. Several profile fields are unavailable.</p></div></div>
+      <div class="method-item"><span class="method-icon">⌁</span><div><strong>XGBoost prediction</strong><p>A trained model uses player profile and performance features to estimate value.</p></div></div>
+      <div class="method-item"><span class="method-icon">◎</span><div><strong>Historical holdout</strong><p>47.9% median absolute percentage error on the saved test set. This score does not apply to the incomplete live inputs used here.</p></div></div>
+    </section>
+    <footer><span>PLAYER<span class="brand-light">VALUE</span> <span class="footer-sep">·</span> A DATA EXPLORER</span><span id="model-period">FPL HISTORICAL DATA · XGBOOST MARKET-VALUE MODEL</span></footer>
+  </main>
+</body>
+</html>

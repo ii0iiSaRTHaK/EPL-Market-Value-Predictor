@@ -1,0 +1,54 @@
+{
+  "model": "linear_regression_log1p_with_prior_365d_performance",
+  "league_competition_id": "GB1",
+  "test_cutoff": "2023-07-01",
+  "train_rows": 22457,
+  "test_rows": 5847,
+  "test_date_start": "2023-07-04",
+  "test_date_end": "2026-06-03",
+  "features": [
+    "age",
+    "height_in_cm",
+    "goals_12m",
+    "assists_12m",
+    "minutes_played_12m",
+    "yellow_cards_12m",
+    "red_cards_12m",
+    "games_12m",
+    "minutes_per_game",
+    "position",
+    "sub_position",
+    "foot",
+    "country_of_citizenship",
+    "current_club_name"
+  ],
+  "metrics": [
+    {
+      "model": "Baseline: age, height, position, club",
+      "rows": 5847,
+      "rmse_eur": 21712007.900374677,
+      "mae_eur": 13344311.344181474,
+      "median_absolute_error_eur": 7248826.07684849,
+      "median_absolute_percentage_error": 72.04368163413803,
+      "rmse_log": 1.402459693122977,
+      "r2_log": 0.13321083769341135
+    },
+    {
+      "model": "Retrained: profile plus prior-year performance",
+      "rows": 5847,
+      "rmse_eur": 15655407.721114358,
+      "mae_eur": 9723149.946012426,
+      "median_absolute_error_eur": 5373983.084157213,
+      "median_absolute_percentage_error": 55.63909149225441,
+      "rmse_log": 1.032792648392449,
+      "r2_log": 0.5299338573383148
+    }
+  ],
+  "notes": [
+    "Metrics are from the chronological holdout before the final all-data refit.",
+    "RMSE and median percentage error are in euros and percent respectively.",
+    "No current clubs.csv snapshot features are used for historical observations.",
+    "Appearance features include only matches strictly before each valuation date.",
+    "Player profile fields other than age are the available current player records."
+  ]
+}
