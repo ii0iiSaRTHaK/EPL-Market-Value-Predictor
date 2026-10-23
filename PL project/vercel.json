@@ -1,10 +1,12 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "npm run build",
+  "buildCommand": "npm ci --include=dev && npm run build",
   "outputDirectory": "public",
   "functions": {
-    "api/[...path].py": {
-      "maxDuration": 60
+    "api/**/*.py": {
+      "maxDuration": 60,
+      "excludeFiles": "{node_modules/**,vendor/**,src/**,public/**,notebooks/**,reports/**,tests/**,.build/**}"
     }
   }
 }
+
