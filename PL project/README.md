@@ -1,5 +1,7 @@
 # Premier League Player Value
 
+**[Live web app](https://epl-market-value-predictor.vercel.app/)**
+
 A Premier League player search and market-value estimator. Player names and season totals are fetched from public historical Fantasy Premier League CSV datasets hosted by [vaastav/Fantasy-Premier-League](https://github.com/vaastav/Fantasy-Premier-League). Selected players are scored by the saved XGBoost model in `models/pl_value_model_xgboost_retrained.joblib`.
 
 ## Setup
@@ -23,11 +25,13 @@ Then open [http://localhost:3001](http://localhost:3001). The server fetches and
 
 ## Deploy to Vercel
 
-The Vercel deployment keeps the existing built frontend and model artifact. `vercel.json` builds the UI into `public`, while `api/[...path].py` provides the same `/api/status`, `/api/players`, and `/api/players/<id>/prediction` endpoints using Vercel's Python Functions runtime. The original `server.js`, `predict.py`, and frontend source remain the local-development path.
+Import this Git repository into Vercel with **Root Directory** set to `PL project` and allow Vercel to detect Python. `vercel.json` installs the frontend dependencies, builds the UI with `npm run build`, and serves `public`. `pyproject.toml` declares the Python 3.13 model dependencies and the `api.index:handler` entrypoint. No environment variables or provider API keys are required.
 
-In Vercel, import the Git repository and set **Root Directory** to `EPL-Market-Value-Predictor/PL project`. Leave the framework preset as **Other** and use the settings in `vercel.json` (build command `npm run build`, output directory `public`). The Python runtime installs packages from `requirements.txt`; no environment variables or provider API keys are needed. Deploy, then open the deployment URL and try a player search and prediction. The API downloads season CSVs from the public Fantasy Premier League dataset, so those requests need outbound network access.
+The serverless API preserves player search and XGBoost predictions. Linux uses the official CPU-only XGBoost package to avoid bundling unused GPU libraries. The local development server continues to use `server.js` and `predict.py`.
 
-The upstream repository documents the player season files and their fields in its [data dictionary](https://github.com/vaastav/Fantasy-Premier-League/blob/master/DATA_DICTIONARY.md). Dataset downloads are cached in memory for six hours. This is historical season data rather than live match data.
+After deploying, verify `/api/status`, search for a player, and request a valuation. The API downloads public season CSVs on demand and caches them for six hours per warm function instance.
+
+The upstream repository documents the player season files and their fields in its [data dictionary](https://github.com/vaastav/Fantasy-Premier-League/blob/master/DATA_DICTIONARY.md). This is historical season data rather than live match data.
 
 ## Prediction flow
 
