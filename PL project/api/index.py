@@ -1,4 +1,4 @@
-"""Vercel serverless adapter for the existing player search and model API."""
+"""Vercel Python entrypoint for the existing player search and model API."""
 
 import csv
 import io
@@ -6,6 +6,8 @@ import json
 import math
 import re
 import unicodedata
+import time
+from concurrent.futures import ThreadPoolExecutor
 from http.server import BaseHTTPRequestHandler
 from pathlib import Path
 from urllib.error import HTTPError, URLError
@@ -47,8 +49,8 @@ def _normalize(name):
 
 def _season_players(season):
     cached = _season_cache.get(season)
-    if cached:
-        return cached
+    if cached and cached[0] > time.monotonic():
+        return cached[1]
     url = f"{DATA_BASE}/{season}/cleaned_players.csv"
     try:
         with urlopen(url, timeout=20) as response:
@@ -60,13 +62,13 @@ def _season_players(season):
         raise RuntimeError(f"Historical player data for {season} has an unexpected format.")
     for row in rows:
         row["season"] = season
-    _season_cache[season] = rows
+    _season_cache[season] = (time.monotonic() + 6 * 60 * 60, rows)
     return rows
 
 
 def _summary(player):
     name = f"{player.get('first_name', '')} {player.get('second_name', '')}".strip()
-    positions = {"1": "Goalkeeper", "2": "Defender", "3": "Midfielder", "4": "Attacker"}
+    positions = {"GK": "Goalkeeper", "DEF": "Defender", "MID": "Midfielder", "FWD": "Attacker", "1": "Goalkeeper", "2": "Defender", "3": "Midfielder", "4": "Attacker"}
     return {
         "id": f"{player['season']}:{_normalize(name)}", "name": name,
         "age": None, "country": "", "height": "", "image": "", "club": "",
@@ -99,7 +101,9 @@ def _matches(player, query):
 
 
 def _players(query):
-    candidates = [player for season in SEASONS for player in _season_players(season) if _matches(player, query)]
+    with ThreadPoolExecutor(max_workers=len(SEASONS)) as pool:
+        season_rows = pool.map(_season_players, SEASONS)
+        candidates = [player for rows in season_rows for player in rows if _matches(player, query)]
     latest = {}
     for player in candidates:
         key = _normalize(f"{player.get('first_name', '')} {player.get('second_name', '')}")
@@ -203,3 +207,4 @@ class handler(BaseHTTPRequestHandler):
 
     def log_message(self, _format, *_args):
         return
+
